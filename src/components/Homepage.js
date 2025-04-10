@@ -28,7 +28,8 @@ const HomePage = () => {
     {
       title: "Web application for spam detection",
       description: "A machine learning-powered web app that accurately classifies messages as spam or not using TF-IDF and Naive Bayes, helping users filter unwanted content effectively.",
-      link: "https://github.com/Abdul7569/spam_detection_app"
+      link: "https://github.com/Abdul7569/spam_detection_app",
+      liveLink: "https://spam-detection-app-rhpb.vercel.app/"
     }
   ];
 
