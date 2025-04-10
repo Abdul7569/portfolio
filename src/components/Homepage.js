@@ -72,6 +72,20 @@ const HomePage = () => {
                 >
                   View on GitHub
                 </Button>
+
+                {/* Add Visit Live App button below View on GitHub */}
+                {project.liveLink && (
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    href={project.liveLink}
+                    sx={{ mt: 2 }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit Live App
+                  </Button>
+                )}
               </CardContent>
             </Card>
           </Grid>
@@ -167,15 +181,14 @@ const HomePage = () => {
           </Button>
         </Grid>
         <Grid item>
-        <Button
-  variant="contained"
-  color="error"
-  startIcon={<Email />}
-  href="https://mail.google.com/mail/?view=cm&fs=1&to=abdulkalampulicharla@gmail.com"
->
-  Email Me
-</Button>
-
+          <Button
+            variant="contained"
+            color="error"
+            startIcon={<Email />}
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=abdulkalampulicharla@gmail.com"
+          >
+            Email Me
+          </Button>
         </Grid>
       </Grid>
     </Container>
