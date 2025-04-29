@@ -1,14 +1,16 @@
 import { ReactTyped } from 'react-typed';
 import React from "react";
 import { Container, Typography, Button, Grid, Card, CardContent, Box, Paper } from "@mui/material";
-import { GitHub, LinkedIn, Email, Code, Laptop, Memory, Storage } from "@mui/icons-material";
+import { GitHub, LinkedIn, Email, Code, Laptop, Memory } from "@mui/icons-material";
+import SettingsApplications from '@mui/icons-material/SettingsApplications';
 
 const HomePage = () => {
   const projects = [
     {
       title: "AI Powered Resume Role Recommender",
       description: "Build an AI application which will suggest you top 3 roles that suits for your resume using BERT and Spacy sentence transformers.",
-      link: "https://github.com/Abdul7569/AI_Powered_Resume_Role_Recommender"
+      link: "https://github.com/Abdul7569/AI_Powered_Resume_Role_Recommender",
+      liveLink: "https://abdul7569-ai-powered-resume-role-recommender-app-rcso5x.streamlit.app/"
     },
     {
       title: "Expense Tracker & Debt Repayment Calculator",
@@ -45,7 +47,7 @@ const HomePage = () => {
       </Typography>
       <Typography variant="h5" sx={{ color: "black", mt: 1 }}>
         <ReactTyped
-          strings={["Web Developer", "AI Enthusiast", "ML Enthusiast"]}
+          strings={["Data Scientist","AI&ML Enthusiast", "Web Developer"]}
           typeSpeed={60}
           backSpeed={40}
           loop
@@ -103,60 +105,63 @@ const HomePage = () => {
           Skills
         </Typography>
 
+        
         <Grid container spacing={4} sx={{ mt: 3 }}>
-          {/* Programming Languages & Databases */}
-          <Grid item xs={12} sm={6}>
-            <Paper elevation={3} sx={{ p: 2 }}>
-              <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }}>
-                <Code sx={{ mr: 2 }} /> 
-                <span>Programming Languages & Databases</span>
-              </Typography>
-              <Typography variant="body1" sx={{ mt: 1 }}>
-                Python, Java, SQL
-              </Typography>
-            </Paper>
-          </Grid>
+    {/* Programming Languages & Databases */}
+    <Grid item xs={12} sm={6}>
+      <Paper elevation={3} sx={{ p: 2 }}>
+        <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }}>
+          <Code sx={{ mr: 2 }} />
+          <span>Programming Languages & Databases</span>
+        </Typography>
+        <Typography variant="body1" sx={{ mt: 1 }}>
+          Python, Java, SQL, Postgres
+        </Typography>
+      </Paper>
+    </Grid>
 
-          {/* Tools & Libraries */}
-          <Grid item xs={12} sm={6}>
-            <Paper elevation={3} sx={{ p: 2 }}>
-              <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }}>
-                <Memory sx={{ mr: 2 }} />
-                <span>Tools & Libraries</span>
-              </Typography>
-              <Typography variant="body1" sx={{ mt: 1 }}>
-                Machine Learning (Scikit-learn, Pandas, NumPy, TensorFlow, Keras), GitHub, Microsoft Excel, Microsoft PowerPoint, Tableau
-              </Typography>
-            </Paper>
-          </Grid>
+    {/* Tools & Libraries */}
+    <Grid item xs={12} sm={6}>
+      <Paper elevation={3} sx={{ p: 2 }}>
+        <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }}>
+          <Memory sx={{ mr: 2 }} />
+          <span>Tools & Libraries</span>
+        </Typography>
+        <Typography variant="body1" sx={{ mt: 1 }}>
+        Machine Learning (Scikit-learn, Pandas, NumPy, TensorFlow, Keras), GitHub, Windows, Microsoft Excel, Microsoft PowerPoint, Power BI
+        </Typography>
+      </Paper>
+    </Grid>
 
-          {/* Web Development */}
-          <Grid item xs={12} sm={6}>
-            <Paper elevation={3} sx={{ p: 2 }}>
-              <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }}>
-                <Laptop sx={{ mr: 2 }} />
-                <span>Web Development</span>
-              </Typography>
-              <Typography variant="body1" sx={{ mt: 1 }}>
-                HTML, CSS, JavaScript, Flask, Node.js, Bootstrap
-              </Typography>
-            </Paper>
-          </Grid>
+    {/* DevOps */}
+    <Grid item xs={12} sm={6}>
+      <Paper elevation={3} sx={{ p: 2 }}>
+        <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }}>
+          <SettingsApplications sx={{ mr: 2 }} /> {/* Or a more relevant icon */}
+          <span>DevOps</span>
+        </Typography>
+        <Typography variant="body1" sx={{ mt: 1 }}>
+          Docker, GitHub Actions, Firebase, Airflow, Spark, CI/CD Pipelines
+        </Typography>
+      </Paper>
+    </Grid>
 
-          {/* Operating Systems */}
-          <Grid item xs={12} sm={6}>
-            <Paper elevation={3} sx={{ p: 2 }}>
-              <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }}>
-                <Storage sx={{ mr: 2 }} />
-                <span>Operating Systems</span>
-              </Typography>
-              <Typography variant="body1" sx={{ mt: 1 }}>
-                Windows, Linux
-              </Typography>
-            </Paper>
-          </Grid>
-        </Grid>
-      </Box>
+    {/* Web Development */}
+    <Grid item xs={12} sm={6}>
+      <Paper elevation={3} sx={{ p: 2 }}>
+        <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }}>
+          <Laptop sx={{ mr: 2 }} />
+          <span>Web Development</span>
+        </Typography>
+        <Typography variant="body1" sx={{ mt: 1 }}>
+          HTML, CSS, JavaScript, Flask, React.js
+        </Typography>
+      </Paper>
+    </Grid>
+
+  
+  </Grid>
+</Box>
 
       {/* Contact Section */}
       <Typography id="contact" variant="h4" sx={{ mt: 5 }}>
