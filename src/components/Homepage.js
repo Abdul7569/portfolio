@@ -6,11 +6,6 @@ import { GitHub, LinkedIn, Email, Code, Laptop, Memory, Storage } from "@mui/ico
 const HomePage = () => {
   const projects = [
     {
-      title: "AI Powered Resume Role Recommender",
-      description: "Build an AI application which will suggest you top 3 roles that suits for your resume using BERT and Spacy sentence transformers.",
-      link: "https://github.com/Abdul7569/AI_Powered_Resume_Role_Recommender"
-    },
-    {
       title: "Expense Tracker & Debt Repayment Calculator",
       description: "Tracks expenses and calculates debt-free timeline, with AI-powered insights in progress.",
       link: "https://github.com/Abdul7569/expense_tracker"
