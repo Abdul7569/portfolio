@@ -1,7 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomePage from "./components/Homepage";
-import Navbar from "./components/Navbar";
+
+// ✅ CORRECT
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+
+import HomePage from "./components/Homepage";  // make sure the file is named Homepage.js
+import Navbar from "./components/Navbar";      // assuming you have a Navbar component
 
 function App() {
   return (

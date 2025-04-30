@@ -1,10 +1,40 @@
 import { ReactTyped } from 'react-typed';
-import React from "react";
-import { Container, Typography, Button, Grid, Card, CardContent, Box, Paper } from "@mui/material";
-import { GitHub, LinkedIn, Email, Code, Laptop, Memory } from "@mui/icons-material";
-import SettingsApplications from '@mui/icons-material/SettingsApplications';
+import React, { useState } from "react";
+import {
+  Container,
+  Typography,
+  Button,
+  Grid,
+  Card,
+  CardContent,
+  Box,
+  Paper,
+  Switch
+} from "@mui/material";
+import {
+  GitHub,
+  LinkedIn,
+  Email,
+  Code,
+  Laptop,
+  Memory,
+  Build
+} from "@mui/icons-material";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const HomePage = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const theme = createTheme({
+    palette: {
+      mode: darkMode ? 'dark' : 'light',
+    },
+  });
+
+  const handleToggleTheme = () => {
+    setDarkMode(!darkMode);
+  };
+
   const projects = [
     {
       title: "AI Powered Resume Role Recommender",
@@ -41,167 +71,183 @@ const HomePage = () => {
   ];
 
   return (
-    <Container sx={{ textAlign: "center", mt: 5 }}>
-      <Typography variant="h3" gutterBottom>
-        Hi, I'm Abdul Kalam Pulicharla
-      </Typography>
-      <Typography variant="h5" sx={{ color: "black", mt: 1 }}>
-        <ReactTyped
-          strings={["Data Scientist","AI&ML Enthusiast", "Web Developer"]}
-          typeSpeed={60}
-          backSpeed={40}
-          loop
-        />
-      </Typography>
+    <ThemeProvider theme={theme}>
+      <Container sx={{ textAlign: "center", mt: 5 }}>
+        {/* Dark Mode Toggle */}
+        <Box sx={{ textAlign: 'right' }}>
+          <Typography variant="body1" sx={{ display: 'inline', mr: 1 }}>
+            {darkMode ? 'Dark' : 'Light'} Mode
+          </Typography>
+          <Switch checked={darkMode} onChange={handleToggleTheme} />
+        </Box>
 
-      {/* Projects Section */}
-      <Typography id="projects" variant="h4" sx={{ mt: 5 }}>
-        Projects
-      </Typography>
-      <Grid container spacing={3} sx={{ mt: 3 }}>
-        {projects.map((project, index) => (
-          <Grid item xs={12} md={6} key={index}>
-            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-              <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <div>
-                  <Typography variant="h5">{project.title}</Typography>
-                  <Typography color="text.secondary" sx={{ mt: 1 }}>
-                    {project.description}
-                  </Typography>
-                </div>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  href={project.link}
-                  sx={{ mt: 2 }}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View on GitHub
-                </Button>
+        <Typography variant="h3" gutterBottom>
+          Hi, I'm Abdul Kalam Pulicharla
+        </Typography>
+        <Typography variant="h5" sx={{ color: "black", mt: 1 }}>
+          <ReactTyped
+            strings={["Data Scientist", "AI&ML Enthusiast", "Web Developer"]}
+            typeSpeed={60}
+            backSpeed={40}
+            loop
+          />
+        </Typography>
 
-                {/* Add Visit Live App button below View on GitHub */}
-                {project.liveLink && (
+        {/* Projects Section */}
+        <Typography id="projects" variant="h4" sx={{ mt: 5 }}>
+          Projects
+        </Typography>
+        <Grid container spacing={3} sx={{ mt: 3 }}>
+          {projects.map((project, index) => (
+            <Grid item xs={12} md={6} key={index}>
+              <Card
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                  '&:hover': {
+                    transform: 'scale(1.02)',
+                    boxShadow: 6,
+                  },
+                }}
+              >
+                <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                  <div>
+                    <Typography variant="h5">{project.title}</Typography>
+                    <Typography color="text.secondary" sx={{ mt: 1 }}>
+                      {project.description}
+                    </Typography>
+                  </div>
                   <Button
                     variant="contained"
-                    color="secondary"
-                    href={project.liveLink}
+                    color="primary"
+                    href={project.link}
                     sx={{ mt: 2 }}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Visit Live App
+                    View on GitHub
                   </Button>
-                )}
-              </CardContent>
-            </Card>
+                  {project.liveLink && (
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      href={project.liveLink}
+                      sx={{ mt: 2 }}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Visit Live App
+                    </Button>
+                  )}
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+
+        {/* Skills Section */}
+        <Box sx={{ mt: 5 }}>
+          <Typography id="skills" variant="h4" sx={{ fontWeight: 'bold', textAlign: 'left' }}>
+            Skills
+          </Typography>
+
+          <Grid container spacing={4} sx={{ mt: 3 }}>
+            {/* Programming Languages & Databases */}
+            <Grid item xs={12} sm={6}>
+              <Paper elevation={3} sx={{ p: 2 }}>
+                <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }}>
+                  <Code sx={{ mr: 2 }} />
+                  <span>Programming Languages & Databases</span>
+                </Typography>
+                <Typography variant="body1" sx={{ mt: 1 }}>
+                  Python, Java, SQL, Postgres
+                </Typography>
+              </Paper>
+            </Grid>
+
+            {/* Tools & Libraries */}
+            <Grid item xs={12} sm={6}>
+              <Paper elevation={3} sx={{ p: 2 }}>
+                <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }}>
+                  <Memory sx={{ mr: 2 }} />
+                  <span>Tools & Libraries</span>
+                </Typography>
+                <Typography variant="body1" sx={{ mt: 1 }}>
+                  Machine Learning (Scikit-learn, Pandas, NumPy, TensorFlow, Keras), GitHub, Windows, Microsoft Excel, Microsoft PowerPoint, Power BI
+                </Typography>
+              </Paper>
+            </Grid>
+
+            {/* DevOps */}
+            <Grid item xs={12} sm={6}>
+              <Paper elevation={3} sx={{ p: 2 }}>
+                <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }}>
+                  <Build sx={{ mr: 2 }} />
+                  <span>DevOps</span>
+                </Typography>
+                <Typography variant="body1" sx={{ mt: 1 }}>
+                  Docker, GitHub Actions, Firebase, Airflow, Spark, CI/CD Pipelines
+                </Typography>
+              </Paper>
+            </Grid>
+
+            {/* Web Development */}
+            <Grid item xs={12} sm={6}>
+              <Paper elevation={3} sx={{ p: 2 }}>
+                <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }}>
+                  <Laptop sx={{ mr: 2 }} />
+                  <span>Web Development</span>
+                </Typography>
+                <Typography variant="body1" sx={{ mt: 1 }}>
+                  HTML, CSS, JavaScript, Flask, React.js
+                </Typography>
+              </Paper>
+            </Grid>
           </Grid>
-        ))}
-      </Grid>
+        </Box>
 
-      {/* Skills Section */}
-      <Box sx={{ mt: 5 }}>
-        <Typography id="skills" variant="h4" sx={{ fontWeight: 'bold', textAlign: 'left' }}>
-          Skills
+        {/* Contact Section */}
+        <Typography id="contact" variant="h4" sx={{ mt: 5 }}>
+          Contact
         </Typography>
-
-        
-        <Grid container spacing={4} sx={{ mt: 3 }}>
-    {/* Programming Languages & Databases */}
-    <Grid item xs={12} sm={6}>
-      <Paper elevation={3} sx={{ p: 2 }}>
-        <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }}>
-          <Code sx={{ mr: 2 }} />
-          <span>Programming Languages & Databases</span>
-        </Typography>
-        <Typography variant="body1" sx={{ mt: 1 }}>
-          Python, Java, SQL, Postgres
-        </Typography>
-      </Paper>
-    </Grid>
-
-    {/* Tools & Libraries */}
-    <Grid item xs={12} sm={6}>
-      <Paper elevation={3} sx={{ p: 2 }}>
-        <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }}>
-          <Memory sx={{ mr: 2 }} />
-          <span>Tools & Libraries</span>
-        </Typography>
-        <Typography variant="body1" sx={{ mt: 1 }}>
-        Machine Learning (Scikit-learn, Pandas, NumPy, TensorFlow, Keras), GitHub, Windows, Microsoft Excel, Microsoft PowerPoint, Power BI
-        </Typography>
-      </Paper>
-    </Grid>
-
-    {/* DevOps */}
-    <Grid item xs={12} sm={6}>
-      <Paper elevation={3} sx={{ p: 2 }}>
-        <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }}>
-          <SettingsApplications sx={{ mr: 2 }} /> {/* Or a more relevant icon */}
-          <span>DevOps</span>
-        </Typography>
-        <Typography variant="body1" sx={{ mt: 1 }}>
-          Docker, GitHub Actions, Firebase, Airflow, Spark, CI/CD Pipelines
-        </Typography>
-      </Paper>
-    </Grid>
-
-    {/* Web Development */}
-    <Grid item xs={12} sm={6}>
-      <Paper elevation={3} sx={{ p: 2 }}>
-        <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', fontWeight: 'bold' }}>
-          <Laptop sx={{ mr: 2 }} />
-          <span>Web Development</span>
-        </Typography>
-        <Typography variant="body1" sx={{ mt: 1 }}>
-          HTML, CSS, JavaScript, Flask, React.js
-        </Typography>
-      </Paper>
-    </Grid>
-
-  
-  </Grid>
-</Box>
-
-      {/* Contact Section */}
-      <Typography id="contact" variant="h4" sx={{ mt: 5 }}>
-        Contact
-      </Typography>
-      <Grid container justifyContent="center" spacing={2}>
-        <Grid item>
-          <Button
-            variant="contained"
-            color="primary"
-            startIcon={<LinkedIn />}
-            href="https://www.linkedin.com/in/abdul-kalam-pulicharla-1876541b3/"
-            target="_blank"
-          >
-            LinkedIn
-          </Button>
+        <Grid container justifyContent="center" spacing={2}>
+          <Grid item>
+            <Button
+              variant="contained"
+              color="primary"
+              startIcon={<LinkedIn />}
+              href="https://www.linkedin.com/in/abdul-kalam-pulicharla-1876541b3/"
+              target="_blank"
+            >
+              LinkedIn
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button
+              variant="contained"
+              color="secondary"
+              startIcon={<GitHub />}
+              href="https://github.com/Abdul7569"
+              target="_blank"
+            >
+              GitHub
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button
+              variant="contained"
+              color="error"
+              startIcon={<Email />}
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=abdulkalampulicharla@gmail.com"
+            >
+              Email Me
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item>
-          <Button
-            variant="contained"
-            color="secondary"
-            startIcon={<GitHub />}
-            href="https://github.com/Abdul7569"
-            target="_blank"
-          >
-            GitHub
-          </Button>
-        </Grid>
-        <Grid item>
-          <Button
-            variant="contained"
-            color="error"
-            startIcon={<Email />}
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=abdulkalampulicharla@gmail.com"
-          >
-            Email Me
-          </Button>
-        </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </ThemeProvider>
   );
 };
 
