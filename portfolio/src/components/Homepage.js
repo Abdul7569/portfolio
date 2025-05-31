@@ -132,7 +132,7 @@ const HomePage = () => {
             <Typography variant="h6" gutterBottom>
               🔁 Pipelines
             </Typography>
-            <Button variant="contained" fullWidth sx={{ mt: 1, backgroundColor: "#00796b" }} href="https://github.com/Abdul7569/adf-etl-pipeline" target="_blank">
+            <Button variant="contained" fullWidth sx={{ mt: 1, backgroundColor: "#00796b" }} href="https://github.com/Abdul7569/weatherAPI_etl_adf" target="_blank">
               Azure ADF ETL Pipeline
             </Button>
             <Button variant="contained" fullWidth sx={{ mt: 1, backgroundColor: "#00796b" }} href="https://github.com/Abdul7569/Stock_market_dashboards" target="_blank">
